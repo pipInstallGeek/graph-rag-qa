@@ -1,0 +1,18 @@
+services:
+  neo4j:
+    image: neo4j:5.20-community
+    container_name: graph-rag-neo4j
+    restart: unless-stopped
+    env_file:
+      - ./neo4j/neo4j.env
+    ports:
+      - "7474:7474"
+      - "7687:7687" 
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+
